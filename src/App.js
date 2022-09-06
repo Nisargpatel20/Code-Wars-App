@@ -1,11 +1,13 @@
 // import logo from './logo.svg';
 import './App.css';
+import { Home } from "./Pages";
 
 function App() {
   return (
     <div className="App">
-      <p>I am Nisarg Patel</p>
+      <Home />
     </div>
+    
   );
 }
 

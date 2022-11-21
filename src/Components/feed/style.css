@@ -1,0 +1,9 @@
+.feed{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.feed__posts {
+    margin-top: 24px;
+    align-self: center;
+}

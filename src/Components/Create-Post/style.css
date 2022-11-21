@@ -2,5 +2,47 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px 24px;
+    padding: 24px;
+}
+.createAPost__Top {
+    margin: 0px 5px;
+}
+.createPost_loggedIn{
+    background-color: white;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-top: 6px;
+}
+.createPost_imageUpload > input{
+    display: none;
+} 
+
+.createPost_uploadBtn{
+    border: none;
+    background-color: white;
+}
+
+.createPost_loggedInBottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.createPost_textarea{
+    border: none;
+    width: 100%;
+    outline: none;
+}
+
+.createPost_textarea :focus{
+    outline: none;
+}
+
+
+#image-preview{
+    display:none;
+    height: 120px;
+    margin: 12px 1px;
 }

@@ -1,6 +1,18 @@
 .navbar{
     display: flex;
     justify-content: space-between;
-    padding: 12px 24px;
-    background-color: white;
+    padding: 10px 25px;
+    background-color: rgb(168, 191, 224);
+    
+    height: 40px;
+}
+.logo_name{
+    margin: 6px 5px;
+    font-family: 'Blaka Ink', cursive;
+    font-size: 30px;
+}
+
+.navbar_img{
+    height: 30px;
+    border-radius: 12px;
 }

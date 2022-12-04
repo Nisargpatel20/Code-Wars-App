@@ -7,9 +7,12 @@ import CommentInput from '../comment-input';
 import { UserContext } from '../../context/user';
 
 export default function Post({profileUrl, username
-    ,id,photoURL, caption, comments}) {
+    ,id,landmark, photoURL, caption, comments,longitude, latitude}) {
   const [user,setUser] = useContext(UserContext).user;
-
+  var same_user_post = false;
+  if (user && user.email.replace("@gmail.com","") === username){
+    same_user_post = true
+  }
   const deletePost = () =>{
     var imageRef = storage.refFromURL(photoURL);
     imageRef.delete().then(function(){
@@ -31,8 +34,13 @@ export default function Post({profileUrl, username
           <img className="post__profilePicture" src={profileUrl}/>
           <p style={{marginLeft:"8px"}}>{username}</p>
         </div>
-        <button onClick={deletePost} className='post__deleteButton'> Delete</button>
+        
+        {same_user_post?<button onClick={deletePost} className='post__deleteButton'> Delete</button>:<></>}
+
       </div>
+      {landmark?<div className='post_landmark'>
+      Landmark: <span className="landmark_name" onClick={()=> window.open("https://maps.google.com?q="+latitude+","+longitude, "_blank")}>{landmark}</span>
+      </div>:<></>}
       <div className='post_center'>
         <img className='post_photoURL' src={photoURL}/>
       </div>
@@ -43,7 +51,6 @@ export default function Post({profileUrl, username
         {caption}</p>
       </div>
         {/* <div> */}
-        {console.log('comments here--',comments)}
         {comments ? (
             comments.map((comment) => (
             <Comment username={comment.username} 

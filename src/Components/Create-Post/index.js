@@ -7,14 +7,16 @@ import makeid from '../../helper/functions';
 import { db, storage } from '../../firebase';
 import { upload } from '@testing-library/user-event/dist/upload';
 import firebase from "firebase/compat/app";
-const vision = require('react-cloud-vision-api')
-vision.init({auth: 'AIzaSyCr8EKEbY5-sqcQqxmwRcz4-AxvLGGLy20'})
-
-// import firebase from 'firebase/app'
+const vision = require('react-cloud-vision-api');
+vision.init({auth: 'AIzaSyCr8EKEbY5-sqcQqxmwRcz4-AxvLGGLy20'});
 
 export default function CreatePost() {
   const [user, setUser] = useContext(UserContext).user;
   const [caption, setCaption] = useState("");
+  const [landmark, setLandmark] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState("");
+
 
   const [image, setImage] = useState(null);
 
@@ -38,12 +40,20 @@ export default function CreatePost() {
           features: [
             new vision.Feature('TEXT_DETECTION', 4),
             new vision.Feature('LABEL_DETECTION', 10),
+            new vision.Feature('LANDMARK_DETECTION')
           ]
         })
         vision.annotate(req).then((res) => {
           // handling response
           const temp = JSON.stringify(res.responses);
           const labels = res.responses[0].labelAnnotations;
+          const landmark = res.responses[0].landmarkAnnotations[0].description;
+          const longitude = res.responses[0].landmarkAnnotations[0].locations[0].latLng.longitude;
+          const latitude = res.responses[0].landmarkAnnotations[0].locations[0].latLng.latitude;
+
+          setLongitude(longitude);
+          setLatitude(latitude);
+          setLandmark(landmark);
           var arr = [];
           labels.forEach((label => 
             arr.push(label.description)));
@@ -79,12 +89,16 @@ export default function CreatePost() {
             firebase.firestore.FieldValue.serverTimestamp(),
             hashtags: caption,
             photoUrl: imageUrl,
+            landmark: landmark,
+            longitude: longitude,
+            latitude:latitude,
             username: user.email.replace("@gmail.com",""),
             profileUrl: user.photoURL,
             comments: []
           });
         });
         setCaption("");
+        setLandmark("");
         setProgress(0);
         setImage(null);
 
@@ -104,10 +118,17 @@ export default function CreatePost() {
             <textarea 
             id="createPost__textarea"
             className='createPost_textarea' 
-            rows="3"
+            rows="2"
             placeholder='Enter Caption And Hashtags Here ..'
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
+            ></textarea>
+            <textarea 
+            id="createPost__landmark"
+            className='createPost_landmark' 
+            rows="1"
+            value={landmark}
+            onChange={(e) => setLandmark(e.target.value)}
             ></textarea>
             <div className="createPost_imagePreview">
               <img id="image-preview" alt=""/>

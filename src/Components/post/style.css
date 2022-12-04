@@ -38,3 +38,11 @@
     object-fit: cover;
     margin:16px 0px;
 }
+
+.landmark_name{
+    color: rgb(0, 174, 255);
+    cursor: pointer;
+}
+.landmark_name:hover{
+    text-decoration: underline;
+}

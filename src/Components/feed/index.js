@@ -27,10 +27,13 @@ export default function Feed() {
           key={id}
           id={id}
           profileUrl={post.profileUrl}
+          landmark={post.landmark}
           username={post.username}
           photoURL={post.photoUrl}
           caption={post.hashtags}
           comments={post.comments}
+          longitude={post.longitude}
+          latitude={post.latitude}
           />
         );
         })}

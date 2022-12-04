@@ -35,7 +35,11 @@
     width: 100%;
     outline: none;
 }
-
+.createPost_landmark{
+    border: none;
+    width: 100%;
+    outline: none;
+}
 .createPost_textarea :focus{
     outline: none;
 }

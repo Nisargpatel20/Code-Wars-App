@@ -16,3 +16,25 @@
     height: 30px;
     border-radius: 12px;
 }
+.navbar_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.signInBtn{
+    background-color: rgb(255, 64, 0);
+    max-width: 170px;
+    max-height:30px;
+    text-align: center;
+    padding: 6px 6px;
+    border-radius: 4px;
+    color: rgb(24, 23, 23);
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 3px;
+    /* align-items: center; */
+}
+.text_signin{
+    margin-top: 5px;
+}

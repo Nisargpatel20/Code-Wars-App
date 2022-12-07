@@ -10,6 +10,10 @@
     font-weight: 500;
     /* align-items: center; */
 }
+.signInBtn:hover{
+    cursor: pointer;
+}
 .text_signin{
     margin-top: 5px;
 }
+

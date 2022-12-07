@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { UserContext } from '../../context/user';
-import { signInwithGoogle } from '../../services/auth';
+import { signInwithGoogle } from '../../services/google/auth';
 import './index.css'
 
 export default function SignInBtn() {
@@ -12,6 +12,9 @@ export default function SignInBtn() {
   };
   return (
     <div className='signInBtn' onClick={signInBtnClick}>
+
+      
+       
         <p class="text_signin">SignIn with Google</p>
       
     </div>

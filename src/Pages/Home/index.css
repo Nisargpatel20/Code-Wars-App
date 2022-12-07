@@ -5,8 +5,10 @@
   font-family: "Poppins", sans-serif;
 }
 .home{
-    background-color:#1d1c1b;
+    background-color:black;
     /* height: 100vh; */
+    max-height: unset;
+
 }
 .app_body {
     display: flex;
